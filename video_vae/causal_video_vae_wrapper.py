@@ -117,12 +117,6 @@ class CausalVideoVAELossWrapper(nn.Module):
         return reconstruct_loss, gan_loss, loss_log
 
     
-
-    
-
-    
-
-    
     
     @property
     def device(self):
