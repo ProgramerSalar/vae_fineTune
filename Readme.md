@@ -9,12 +9,12 @@
 
 2. clone this repo: 
     ```
-    git clone https://github.com/ProgramerSalar/FineTune.git
+    git clone https://github.com/ProgramerSalar/vae_fineTune.git
     ```
 
 3. install the `req.txt` file 
     ```
-    cd FineTune
+    cd vae_fineTune
     pip install -r req.txt 
     ```
 
@@ -27,7 +27,7 @@
 5. Download the Dataset file 
 
 ```
-    cd FineTune/Data
+    cd vae_fineTune/Data
     hf download ProgramerSalar/clip_video clip_video_part_2.zip --repo-type dataset --local-dir .
     unzip clip_video_part_2.zip
     rm -rf clip_video_part_2.zip
