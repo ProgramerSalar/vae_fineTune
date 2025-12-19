@@ -32,7 +32,7 @@ torchrun --nproc_per_node $GPUS \
     --resolution $RESOLUTION \
     --max_frames $NUM_FRAMES \
     --disc_start 250000 \
-    --kl_weight 1e-4 \
+    --kl_weight 1e-5 \
     --pixelloss_weight 10.0 \
     --perceptual_weight 1.0 \
     --disc_weight 0.5 \
