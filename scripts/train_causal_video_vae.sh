@@ -31,9 +31,9 @@ torchrun --nproc_per_node $GPUS \
     --image_mix_ratio 0.0 \
     --resolution $RESOLUTION \
     --max_frames $NUM_FRAMES \
-    --disc_start 250000 \
-    --kl_weight 1e-5 \
-    --pixelloss_weight 10.0 \
+    --disc_start 5000 \
+    --kl_weight 1e-4 \
+    --pixelloss_weight 1.0 \
     --perceptual_weight 1.0 \
     --disc_weight 0.5 \
     --batch_size $BATCH_SIZE \
@@ -42,8 +42,8 @@ torchrun --nproc_per_node $GPUS \
     --seed 42 \
     --weight_decay 1e-3 \
     --clip_grad 1.0 \
-    --lr 1e-4 \
-    --lr_disc 1e-4 \
+    --lr 5e-5 \
+    --lr_disc 5e-5 \
     --warmup_epochs 1 \
     --epochs 100 \
     --iters_per_epoch 2000 \
