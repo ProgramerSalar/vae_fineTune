@@ -5,6 +5,8 @@
 # Stage-1: image and video mixed training
 # Stage-2: pure video training, using context parallel to load video with more video frames (up to 257 frames)
 
+# Bid dataset use the `kl_weight = 1e-4`
+
 GPUS=1  # The gpu number
 VAE_MODEL_PATH=PATH/vae_ckpt   # The vae model dir
 LPIPS_CKPT=PATH/vgg_lpips.pth    # The LPIPS VGG CKPT path, used for calculating the lpips loss
@@ -14,7 +16,7 @@ OUTPUT_DIR=/content/drive/MyDrive/output_dir    # The checkpoint saving dir
 VIDEO_ANNO=annotation/video_data_files_path.jsonl   # The video annotation file path
 RESOLUTION=256     # The training resolution, default is 256
 NUM_FRAMES=17     # x * 8 + 1, the number of video frames
-BATCH_SIZE=2
+BATCH_SIZE=4
 
 
 # Update the Stage-1 training.

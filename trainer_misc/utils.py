@@ -416,7 +416,7 @@ class NativeScalerWithGradNormCount:
 
     def __init__(self, enabled=True):
         print(f"Set the loss scaled to {enabled}")
-        self._scaler = torch.cuda.amp.GradScaler(enabled=enabled)
+        self._scaler = torch.amp.GradScaler(device="cuda", enabled=enabled)
 
     def __call__(self, loss, optimizer, clip_grad=None, parameters=None, create_graph=False, update_grad=True, layer_names=None):
         self._scaler.scale(loss).backward(create_graph=create_graph)
