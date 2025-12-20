@@ -46,8 +46,7 @@ class CausalVideoVAELossWrapper(nn.Module):
             self.loss = LPIPSWithDiscriminator(disc_start, logvar_init=logvar_init, kl_weight=kl_weight,
                 pixelloss_weight=pixelloss_weight, perceptual_weight=perceptual_weight, disc_weight=disc_weight, 
                 add_discriminator=add_discriminator, using_3d_discriminator=False, disc_num_layers=4, lpips_ckpt=lpips_ckpt)
-        else:
-            self.loss = None
+        
 
         self.disc_start = disc_start
 

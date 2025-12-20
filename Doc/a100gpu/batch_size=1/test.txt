@@ -166,3 +166,47 @@ Epoch: [2]  [ 840/2000]  eta: 0:26:50  lr: 0.000100  min_lr: 0.000100  vae_loss:
 Epoch: [2]  [ 880/2000]  eta: 0:25:54  lr: 0.000100  min_lr: 0.000100  vae_loss: 0.0541 (0.0461)  loss_scale: 1.0000 (1.0000)  total_loss: 0.0541 (0.0461)  logvar: 0.0000 (0.0000)  kl_loss: 40419.4102 (39272.7076)  nll_loss: 0.0541 (0.0461)  rec_loss: 0.0058 (0.0057)  perception_loss: 0.0496 (0.0405)  d_weight: 0.0000 (0.0000)  disc_factor: 0.0000 (0.0000)  g_loss: 0.0000 (0.0000)  weight_decay: 0.0010 (0.0010)  grad_norm: 2.3171 (1.7727)  time: 1.3866  data: 0.0000  max mem: 24023
 Epoch: [2]  [ 920/2000]  eta: 0:24:59  lr: 0.000100  min_lr: 0.000100  vae_loss: 0.0652 (0.0473)  loss_scale: 1.0000 (1.0000)  total_loss: 0.0652 (0.0473)  logvar: 0.0000 (0.0000)  kl_loss: 39522.2188 (39290.2093)  nll_loss: 0.0652 (0.0473)  rec_loss: 0.0077 (0.0059)  perception_loss: 0.0576 (0.0415)  d_weight: 0.0000 (0.0000)  disc_factor: 0.0000 (0.0000)  g_loss: 0.0000 (0.0000)  weight_decay: 0.0010 (0.0010)  grad_norm: 1.7427 (1.8167)  time: 1.3958  data: 0.0000  max mem: 24023
 Epoch: [2]  [ 960/2000]  eta: 0:24:04  lr: 0.000100  min_lr: 0.000100  vae_loss: 0.0441 (0.0476)  loss_scale: 1.0000 (1.0000)  total_loss: 0.0441 (0.0476)  logvar: 0.0000 (0.0000)  kl_loss: 39932.9922 (39323.8391)  nll_loss: 0.0441 (0.0476)  rec_loss: 0.0047 (0.0059)  perception_loss: 0.0408 (0.0417)  d_weight: 0.0000 (0.0000)  disc_factor: 0.0000 (0.0000)  g_loss: 0.0000 (0.0000)  weight_decay: 0.0010 (0.0010)  grad_norm: 1.7192 (1.8395)  time: 1.3897  data: 0.0000  max mem: 24023
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Epoch: [0]  [   0/2000]  eta: 1:16:50  lr: 0.000000  min_lr: 0.000000  disc_lr: 0.000000  disc_min_lr: 0.000000  vae_loss: 3.4532 (3.4532)  loss_scale: 1.0000 (1.0000)  total_loss: 3.4532 (3.4532)  logvar: 0.0000 (0.0000)  kl_loss: 34317.5703 (34317.5703)  nll_loss: 0.0214 (0.0214)  rec_loss: 0.0015 (0.0015)  perception_loss: 0.0199 (0.0199)  d_weight: 0.0000 (0.0000)  disc_factor: 0.0000 (0.0000)  g_loss: 0.0000 (0.0000)  weight_decay: 0.0010 (0.0010)  grad_norm: 6.9845 (6.9845)  time: 2.3050  data: 0.0001  max mem: 20179
+Epoch: [0]  [  40/2000]  eta: 1:00:15  lr: 0.000002  min_lr: 0.000002  disc_lr: 0.000000  disc_min_lr: 0.000000  vae_loss: 3.4180 (3.4816)  loss_scale: 1.0000 (1.0000)  total_loss: 3.4180 (3.4816)  logvar: 0.0000 (0.0000)  kl_loss: 33875.9805 (34552.1918)  nll_loss: 0.0272 (0.0263)  rec_loss: 0.0013 (0.0013)  perception_loss: 0.0256 (0.0250)  d_weight: 0.0000 (0.0000)  disc_factor: 0.0000 (0.0000)  g_loss: 0.0000 (0.0000)  weight_decay: 0.0010 (0.0010)  grad_norm: 7.1246 (7.6522)  time: 1.8362  data: 0.0000  max mem: 24046
+Epoch: [0]  [  80/2000]  eta: 0:58:52  lr: 0.000004  min_lr: 0.000004  disc_lr: 0.000000  disc_min_lr: 0.000000  vae_loss: 2.1309 (3.0623)  loss_scale: 1.0000 (1.0000)  total_loss: 2.1309 (3.0623)  logvar: 0.0000 (0.0000)  kl_loss: 20351.5781 (30192.5990)  nll_loss: 0.0586 (0.0431)  rec_loss: 0.0036 (0.0023)  perception_loss: 0.0530 (0.0408)  d_weight: 0.0000 (0.0000)  disc_factor: 0.0000 (0.0000)  g_loss: 0.0000 (0.0000)  weight_decay: 0.0010 (0.0010)  grad_norm: 15.2508 (11.4632)  time: 1.8322  data: 0.0000  max mem: 24048
+Epoch: [0]  [ 120/2000]  eta: 0:57:34  lr: 0.000006  min_lr: 0.000006  disc_lr: 0.000000  disc_min_lr: 0.000000  vae_loss: 0.7588 (2.4181)  loss_scale: 1.0000 (1.0000)  total_loss: 0.7588 (2.4181)  logvar: 0.0000 (0.0000)  kl_loss: 5607.5469 (23511.3487)  nll_loss: 0.1435 (0.0670)  rec_loss: 0.0101 (0.0043)  perception_loss: 0.1348 (0.0627)  d_weight: 0.0000 (0.0000)  disc_factor: 0.0000 (0.0000)  g_loss: 0.0000 (0.0000)  weight_decay: 0.0010 (0.0010)  grad_norm: 8.5760 (11.6327)  time: 1.8359  data: 0.0000  max mem: 24048
+Epoch: [0]  [ 160/2000]  eta: 0:56:19  lr: 0.000008  min_lr: 0.000008  disc_lr: 0.000000  disc_min_lr: 0.000000  vae_loss: 0.4370 (1.9365)  loss_scale: 1.0000 (1.0000)  total_loss: 0.4370 (1.9365)  logvar: 0.0000 (0.0000)  kl_loss: 2740.2449 (18470.6251)  nll_loss: 0.1506 (0.0895)  rec_loss: 0.0092 (0.0058)  perception_loss: 0.1387 (0.0836)  d_weight: 0.0000 (0.0000)  disc_factor: 0.0000 (0.0000)  g_loss: 0.0000 (0.0000)  weight_decay: 0.0010 (0.0010)  grad_norm: 4.4605 (10.1074)  time: 1.8336  data: 0.0000  max mem: 24048
+Epoch: [0]  [ 200/2000]  eta: 0:55:07  lr: 0.000010  min_lr: 0.000010  disc_lr: 0.000000  disc_min_lr: 0.000000  vae_loss: 0.3387 (1.6251)  loss_scale: 1.0000 (1.0000)  total_loss: 0.3387 (1.6251)  logvar: 0.0000 (0.0000)  kl_loss: 1824.1599 (15207.7565)  nll_loss: 0.1517 (0.1043)  rec_loss: 0.0108 (0.0071)  perception_loss: 0.1406 (0.0972)  d_weight: 0.0000 (0.0000)  disc_factor: 0.0000 (0.0000)  g_loss: 0.0000 (0.0000)  weight_decay: 0.0010 (0.0010)  grad_norm: 4.0966 (9.4123)  time: 1.8424  data: 0.0000  max mem: 24049
+Epoch: [0]  [ 240/2000]  eta: 0:53:53  lr: 0.000012  min_lr: 0.000012  disc_lr: 0.000000  disc_min_lr: 0.000000  vae_loss: 0.2988 (1.4076)  loss_scale: 1.0000 (1.0000)  total_loss: 0.2988 (1.4076)  logvar: 0.0000 (0.0000)  kl_loss: 1500.2098 (12956.1937)  nll_loss: 0.1437 (0.1120)  rec_loss: 0.0113 (0.0080)  perception_loss: 0.1309 (0.1040)  d_weight: 0.0000 (0.0000)  disc_factor: 0.0000 (0.0000)  g_loss: 0.0000 (0.0000)  weight_decay: 0.0010 (0.0010)  grad_norm: 5.6974 (9.0880)  time: 1.8384  data: 0.0000  max mem: 24049
+Epoch: [0]  [ 280/2000]  eta: 0:52:39  lr: 0.000014  min_lr: 0.000014  disc_lr: 0.000000  disc_min_lr: 0.000000  vae_loss: 0.2691 (1.2471)  loss_scale: 1.0000 (1.0000)  total_loss: 0.2691 (1.2471)  logvar: 0.0000 (0.0000)  kl_loss: 1204.1381 (11306.6854)  nll_loss: 0.1422 (0.1164)  rec_loss: 0.0117 (0.0085)  perception_loss: 0.1318 (0.1080)  d_weight: 0.0000 (0.0000)  disc_factor: 0.0000 (0.0000)  g_loss: 0.0000 (0.0000)  weight_decay: 0.0010 (0.0010)  grad_norm: 4.5321 (8.5851)  time: 1.8304  data: 0.0000  max mem: 24049
+Epoch: [0]  [ 320/2000]  eta: 0:51:26  lr: 0.000016  min_lr: 0.000016  disc_lr: 0.000000  disc_min_lr: 0.000000  vae_loss: 0.2700 (1.1271)  loss_scale: 1.0000 (1.0000)  total_loss: 0.2700 (1.1271)  logvar: 0.0000 (0.0000)  kl_loss: 1197.8253 (10058.2433)  nll_loss: 0.1460 (0.1213)  rec_loss: 0.0123 (0.0090)  perception_loss: 0.1348 (0.1122)  d_weight: 0.0000 (0.0000)  disc_factor: 0.0000 (0.0000)  g_loss: 0.0000 (0.0000)  weight_decay: 0.0010 (0.0010)  grad_norm: 6.2243 (8.7037)  time: 1.8355  data: 0.0000  max mem: 24049
+Epoch: [0]  [ 360/2000]  eta: 0:50:13  lr: 0.000018  min_lr: 0.000018  disc_lr: 0.000000  disc_min_lr: 0.000000  vae_loss: 0.2452 (1.0314)  loss_scale: 1.0000 (1.0000)  total_loss: 0.2452 (1.0314)  logvar: 0.0000 (0.0000)  kl_loss: 1071.7400 (9066.3901)  nll_loss: 0.1437 (0.1248)  rec_loss: 0.0127 (0.0096)  perception_loss: 0.1260 (0.1152)  d_weight: 0.0000 (0.0000)  disc_factor: 0.0000 (0.0000)  g_loss: 0.0000 (0.0000)  weight_decay: 0.0010 (0.0010)  grad_norm: 4.4963 (8.3856)  time: 1.8402  data: 0.0000  max mem: 24049
+Epoch: [0]  [ 400/2000]  eta: 0:49:00  lr: 0.000020  min_lr: 0.000020  disc_lr: 0.000000  disc_min_lr: 0.000000  vae_loss: 0.2364 (0.9525)  loss_scale: 1.0000 (1.0000)  total_loss: 0.2364 (0.9525)  logvar: 0.0000 (0.0000)  kl_loss: 1011.2388 (8263.0856)  nll_loss: 0.1330 (0.1262)  rec_loss: 0.0132 (0.0099)  perception_loss: 0.1201 (0.1163)  d_weight: 0.0000 (0.0000)  disc_factor: 0.0000 (0.0000)  g_loss: 0.0000 (0.0000)  weight_decay: 0.0010 (0.0010)  grad_norm: 5.8356 (8.3532)  time: 1.8398  data: 0.0000  max mem: 24049
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

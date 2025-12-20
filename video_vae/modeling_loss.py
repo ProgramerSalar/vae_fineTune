@@ -75,8 +75,7 @@ class LPIPSWithDiscriminator(nn.Module):
             self.discriminator = disc_cls(
                 input_nc=disc_in_channels, n_layers=disc_num_layers,
             ).apply(weights_init)
-        else:
-            self.discriminator = None
+        
     
         self.discriminator_iter_start = disc_start
         self.disc_loss = hinge_d_loss if disc_loss == "hinge" else vanilla_d_loss

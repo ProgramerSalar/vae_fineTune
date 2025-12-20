@@ -31,7 +31,7 @@ torchrun --nproc_per_node $GPUS \
     --image_mix_ratio 0.0 \
     --resolution $RESOLUTION \
     --max_frames $NUM_FRAMES \
-    --disc_start 5000 \
+    --disc_start 2000 \
     --kl_weight 1e-12 \
     --pixelloss_weight 1.0 \
     --perceptual_weight 1.0 \
@@ -48,6 +48,7 @@ torchrun --nproc_per_node $GPUS \
     --epochs 100 \
     --iters_per_epoch 2000 \
     --print_freq 40 \
-    --save_ckpt_freq 1
+    --save_ckpt_freq 1 \
+    --add_discriminator
 
 
