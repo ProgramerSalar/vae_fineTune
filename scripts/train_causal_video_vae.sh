@@ -15,8 +15,8 @@ OUTPUT_DIR=/content/drive/MyDrive/output_dir    # The checkpoint saving dir
 
 VIDEO_ANNO=annotation/video_data_files_path.jsonl   # The video annotation file path
 RESOLUTION=256     # The training resolution, default is 256
-NUM_FRAMES=17     # x * 8 + 1, the number of video frames
-BATCH_SIZE=4
+NUM_FRAMES=9     # x * 8 + 1, the number of video frames
+BATCH_SIZE=1
 
 
 # Update the Stage-1 training.
@@ -32,7 +32,7 @@ torchrun --nproc_per_node $GPUS \
     --resolution $RESOLUTION \
     --max_frames $NUM_FRAMES \
     --disc_start 5000 \
-    --kl_weight 1e-4 \
+    --kl_weight 1e-12 \
     --pixelloss_weight 1.0 \
     --perceptual_weight 1.0 \
     --disc_weight 0.5 \
@@ -42,8 +42,8 @@ torchrun --nproc_per_node $GPUS \
     --seed 42 \
     --weight_decay 1e-3 \
     --clip_grad 1.0 \
-    --lr 5e-5 \
-    --lr_disc 5e-5 \
+    --lr 1e-4 \
+    --lr_disc 1e-4 \
     --warmup_epochs 1 \
     --epochs 100 \
     --iters_per_epoch 2000 \

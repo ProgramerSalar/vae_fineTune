@@ -84,7 +84,7 @@ class VideoFrameProcessor:
 
 
 class VideoDataset(Dataset):
-    def __init__(self, anno_file, resolution=256, max_frames=6, add_normalize=True):
+    def __init__(self, anno_file, resolution=256, max_frames=9, add_normalize=True):
         super().__init__()
 
         self.video_annos = []
@@ -130,7 +130,7 @@ class VideoDataset(Dataset):
 
 if __name__ == "__main__":
 
-    anno_file = "/home/manish/Desktop/projects/FineTune/FineTune/annotation/new_file.jsonl"
+    anno_file = "/home/manish/Desktop/projects/vae_fineTune/annotation/testing.jsonl"
     video_dataset = VideoDataset(anno_file)
 
     # print(video_dataset)

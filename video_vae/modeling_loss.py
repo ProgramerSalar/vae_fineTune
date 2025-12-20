@@ -115,19 +115,7 @@ class LPIPSWithDiscriminator(nn.Module):
         inputs = rearrange(inputs, "b c t h w -> (b t) c h w").contiguous()
         reconstructions = rearrange(reconstructions, "b c t h w -> (b t) c h w").contiguous()
 
-        # --- FIX BLOCK: Handle Mismatched Shapes ---
-        if inputs.shape != reconstructions.shape:
-            # Case 1: Same data amount, just different shape (e.g. packed channels)
-            if inputs.numel() == reconstructions.numel():
-                reconstructions = reconstructions.view(inputs.shape)
-            
-            # Case 2: Missing frames (e.g. 12 input frames vs 2 recon frames)
-            # Repeat the reconstruction to match input
-            elif inputs.shape[0] > reconstructions.shape[0] and inputs.shape[0] % reconstructions.shape[0] == 0:
-                repeat_factor = inputs.shape[0] // reconstructions.shape[0]
-                reconstructions = reconstructions.repeat_interleave(repeat_factor, dim=0)
-        # --------------------------------------------
-    
+
         if optimizer_idx == 0:
             # rec_loss = torch.mean(torch.abs(inputs - reconstructions), dim=(1,2,3), keepdim=True)
             rec_loss = torch.mean(F.mse_loss(inputs, reconstructions, reduction='none'), dim=(1,2,3), keepdim=True)

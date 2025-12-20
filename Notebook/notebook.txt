@@ -1,0 +1,124 @@
+The latent dimmension channes is 16
+CausalVideoVAE(
+  (encoder): CausalVaeEncoder(
+    (conv_in): CausalConv3d(
+      (conv): Conv3d(3, 128, kernel_size=(3, 3, 3), stride=(1, 1, 1))
+    )
+    (down_blocks): ModuleList(
+      (0): DownEncoderBlockCausal3D(
+        (resnets): ModuleList(
+          (0-1): 2 x CausalResnetBlock3D(
+            (norm1): CausalGroupNorm(32, 128, eps=1e-06, affine=True)
+
+          )
+        )
+      )
+      (2): DownEncoderBlockCausal3D(
+        (resnets): ModuleList(
+          (0): CausalResnetBlock3D(
+            (norm1): CausalGroupNorm(32, 256, eps=1e-06, affine=True)
+            (conv1): CausalConv3d(
+              (conv): Conv3d(256, 512, kernel_size=(3, 3, 3), stride=(1, 1, 1))
+            )
+            (norm2): CausalGroupNorm(32, 512, eps=1e-06, affine=True)
+            (dropout): Dropout(p=0.0, inplace=False)
+            (conv2): CausalConv3d(
+              (conv): Conv3d(512, 512, kernel_size=(3, 3, 3), stride=(1, 1, 1))
+            )
+            (nonlinearity): SiLU()
+            (conv_shortcut): CausalConv3d(
+              (conv): Conv3d(256, 512, kernel_size=(1, 1, 1), stride=(1, 1, 1))
+            )
+          )
+          (1): CausalResnetBlock3D(
+            (norm1): CausalGroupNorm(32, 512, eps=1e-06, affine=True)
+            (conv1): CausalConv3d(
+              (conv): Conv3d(512, 512, kernel_size=(3, 3, 3), stride=(1, 1, 1))
+            )
+            (norm2): CausalGroupNorm(32, 512, eps=1e-06, affine=True)
+            (dropout): Dropout(p=0.0, inplace=False)
+            (conv2): CausalConv3d(
+              (conv): Conv3d(512, 512, kernel_size=(3, 3, 3), stride=(1, 1, 1))
+            )
+            (nonlinearity): SiLU()
+          )
+        )
+        (downsamplers): ModuleList(
+          (0): Caus
+            (conv1): CausalConv3d(
+              (conv): Conv3d(512, 512, kernel_size=(3, 3, 3), stride=(1, 1, 1))
+            )
+            (norm2): CausalGroupNorm(32, 512, eps=1e-06, affine=True)
+            (dropout): Dropout(p=0.0, inplace=False)
+            (conv2): CausalConv3d(
+              (conv): Conv3d(512, 512, kernel_size=(3, 3, 3), stride=(1, 1, 1))
+            )
+            (nonlinearity): SiLU()
+          )
+        )
+        (upsamplers): ModuleList(
+          (0): CausalUpsample2x(
+            (conv): CausalConv3d(
+              (conv): Conv3d(512, 2048, kernel_size=(3, 3, 3), stride=(1, 1, 1))
+            )
+          )
+        )
+        (temporal_upsamplers): ModuleList(
+          (0): CausalTemporalUpsample2x(
+            (conv): CausalConv3d(
+              (conv): Conv3d(512, 1024, kernel_size=(3, 3, 3), stride=(1, 1, 1))
+            )
+          )
+        )
+      )
+      (2): UpDecoderBlockCausal3D(
+        (resnets): ModuleList(
+          (0): CausalResnetBlock3D(
+            (norm1): CausalGroupNorm(32, 512, eps=1e-06, affine=True)
+            (conv1): CausalConv3d(
+              (conv): Conv3d(512, 256, kernel_size=(3, 3, 3), stride=(1, 1, 1))
+            )
+            (norm2): CausalGroupNorm(32, 256, eps=1e-06, affine=True)
+      
+    (mid_block): CausalUNetMidBlock2D(
+      (attentions): ModuleList(
+        (0): Attention(
+          (group_norm): GroupNorm(32, 512, eps=1e-06, affine=True)
+          (to_q): Linear(in_features=512, out_features=512, bias=True)
+          (to_k): Linear(in_features=512, out_features=512, bias=True)
+          (to_v): Linear(in_features=512, out_features=512, bias=True)
+          (to_out): ModuleList(
+            (0): Linear(in_features=512, out_features=512, bias=True)
+            (1): Dropout(p=0.0, inplace=False)
+          )
+        )
+      )
+      (resnets): ModuleList(
+        (0-1): 2 x CausalResnetBlock3D(
+          (norm1): CausalGroupNorm(32, 512, eps=1e-06, affine=True)
+          (conv1): CausalConv3d(
+            (conv): Conv3d(512, 512, kernel_size=(3, 3, 3), stride=(1, 1, 1))
+          )
+          (norm2): CausalGroupNorm(32, 512, eps=1e-06, affine=True)
+          (dropout): Dropout(p=0.0, inplace=False)
+          (conv2): CausalConv3d(
+            (conv): Conv3d(512, 512, kernel_size=(3, 3, 3), stride=(1, 1, 1))
+          )
+          (nonlinearity): SiLU()
+        )
+      )
+    )
+    (conv_norm_out): CausalGroupNorm(32, 128, eps=1e-06, affine=True)
+    (conv_act): SiLU()
+    (conv_out): CausalConv3d(
+      (conv): Conv3d(128, 3, kernel_size=(3, 3, 3), stride=(1, 1, 1))
+    )
+  )
+  (quant_conv): CausalConv3d(
+    (conv): Conv3d(32, 32, kernel_size=(1, 1, 1), stride=(1, 1, 1))
+  )
+  (post_quant_conv): CausalConv3d(
+    (conv): Conv3d(16, 16, kernel_size=(1, 1, 1), stride=(1, 1, 1))
+  )
+)
+
