@@ -66,7 +66,7 @@ class CausalConv3d(nn.Module):
         self.time_causal_padding = (width_pad, width_pad, height_pad, height_pad, time_pad, 0)
         self.time_uncausal_padding = (width_pad, width_pad, height_pad, height_pad, 0, 0)
 
-        self.conv = nn.Conv3d(in_channels, out_channels, kernel_size, stride=stride, padding=0, dilation=dilation, **kwargs)
+        self.conv = nn.Conv3d(in_channels, out_channels, kernel_size, stride=stride, padding=1, dilation=dilation, **kwargs)
         self.cache_front_feat = deque()
 
     

@@ -139,8 +139,13 @@ class CausalResnetBlock3D(nn.Module):
         hidden_states = self.dropout(hidden_states)
         hidden_states = self.conv2(hidden_states, is_init_image=is_init_image, temporal_chunk=temporal_chunk)
 
+        print(f"shape of input Tensor: {input_tensor.shape}")
+        print(f"shape of hidden Tensor: {hidden_states.shape}")
+
         if self.conv_shortcut is not None:
             input_tensor = self.conv_shortcut(input_tensor, is_init_image=is_init_image, temporal_chunk=temporal_chunk)
+
+            print(f"shape of input_Tensor after [conv_shortcut]: {input_tensor.shape}")
 
         output_tensor = (input_tensor + hidden_states) / self.output_scale_factor
 

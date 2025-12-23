@@ -124,3 +124,39 @@ class CausalVideoVAELossWrapper(nn.Module):
     @property
     def dtype(self):
         return next(self.parameters()).dtype
+    
+
+    # <------------------ This phase to when you test your video to your train model weight how is that ----------------------------------->
+    # encode vae latent
+    def encode_latent(self, x, sample=False, is_init_image=True, 
+            temporal_chunk=False, window_size=16, tile_sample_min_size=256,):
+        # Encode
+        latent = self.encode(
+            x, sample, is_init_image, temporal_chunk, window_size, tile_sample_min_size,
+        )
+        return latent
+    
+    def encode(self, 
+               x, 
+               sample=False,
+               is_init_image=True,
+               temporal_chunk=False,
+               window_size=16,
+               tile_sample_min_size=256):
+        
+        # x: [B, c, t, h, w]
+        b = x.shape[0]
+        
+        if sample:
+            x = self.vae.encode(x,
+                                is_init_image=is_init_image,
+                                temporal_chunk=temporal_chunk,
+                                window_size=window_size,
+                                tile_sample_min_size=256).latent_dist.sample()
+        else:
+            x = self.vae.encode(
+                x, is_init_image=is_init_image, temporal_chunk=temporal_chunk,
+                window_size=window_size, tile_sample_min_size=tile_sample_min_size,
+            ).latent_dist.mode()
+
+        return x 
