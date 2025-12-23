@@ -51,7 +51,7 @@ class CausalVideoVAELossWrapper(nn.Module):
         self.disc_start = disc_start
 
     def load_checkpoint(self, checkpoint_path, **kwargs):
-        checkpoint = torch.load(checkpoint_path, map_location='cpu')
+        checkpoint = torch.load(checkpoint_path, map_location='cpu', weights_only=False)
         if 'model' in checkpoint:
             checkpoint = checkpoint['model']
 
@@ -160,3 +160,61 @@ class CausalVideoVAELossWrapper(nn.Module):
             ).latent_dist.mode()
 
         return x 
+    
+
+    # ----------------------
+
+    # decode vae latent
+    def decode_latent(self, latent, is_init_image=True, 
+        temporal_chunk=False, window_size=2, tile_sample_min_size=256,):
+        x = self.decode(
+            latent, is_init_image, temporal_chunk, window_size, tile_sample_min_size
+        )
+        output_image = x.float()
+        output_image = (output_image / 2 + 0.5).clamp(0, 1)
+        # Convert to PIL images
+        output_image = rearrange(output_image, "B C T H W -> (B T) C H W")
+        output_image = output_image.cpu().permute(0, 2, 3, 1).numpy()
+        output_images = self.numpy_to_pil(output_image)
+        return output_images
+    
+
+    @staticmethod
+    def numpy_to_pil(images):
+        """
+        Convert a numpy image or a batch of images to a PIL image.
+        """
+        if images.ndim == 3:
+            images = images[None, ...]
+        images = (images * 255).round().astype("uint8")
+        if images.shape[-1] == 1:
+            # special case for grayscale (single channel) images
+            pil_images = [Image.fromarray(image.squeeze(), mode="L") for image in images]
+        else:
+            pil_images = [Image.fromarray(image) for image in images]
+
+        return pil_images
+    
+
+    def decode(self, x, is_init_image=True, temporal_chunk=False, 
+            window_size=2, tile_sample_min_size=256,):
+        # x: (B, C, T, H, W) or (B, C, H, W)
+        B = x.shape[0]
+        xdim = x.ndim
+
+        if xdim == 4:
+            # The input is an image
+            x = x.unsqueeze(2)
+
+        x = self.vae.decode(
+            x, is_init_image=is_init_image, temporal_chunk=temporal_chunk,
+            window_size=window_size, tile_sample_min_size=tile_sample_min_size,
+        ).sample
+
+        return x
+    
+
+
+    
+
+    

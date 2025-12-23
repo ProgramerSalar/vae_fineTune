@@ -10,19 +10,23 @@ from einops import rearrange
 from video_vae import CausalVideoVAELossWrapper
 from torchvision import transforms as pth_transforms
 from torchvision.transforms.functional import InterpolationMode
+from diffusers.utils import load_image, export_to_video, export_to_gif
 
+base_model_path = "/content/vae_fineTune/PATH/base_model"
 
-model_path = "/content/vae_fineTune/PATH/vae_ckpt"   # The video-vae checkpoint dir
+# model_path = "/content/vae_fineTune/PATH/vae_ckpt"   # The video-vae checkpoint dir
 model_dtype = 'bf16'
-
+finetune_chekpoint = "/content/drive/MyDrive/output_dir/checkpoint-6.pth"
 
 
 model = CausalVideoVAELossWrapper(
-    model_path,
+    base_model_path,
     model_dtype,
     interpolate=False, 
     add_discriminator=False,
 )
+
+model.load_checkpoint(finetune_chekpoint)
 model = model.to("cuda")
 
 if model_dtype == "bf16":
@@ -107,23 +111,33 @@ if __name__ == "__main__":
 
   torch.cuda.empty_cache()
   video_path = '/content/vae_fineTune/Data/Algebra Basics： Graphing On The Coordinate Plane - Math Antics [9Uc62CuQjc4]/videos/clip_0018.mp4'
+  # video_path = '/content/不安定零点を持つ制御対象の制御（s1に零点） #shorts - 制御工学チャンネル [制御工学の専門チャンネル] (360p, h264).mp4'
 
   frame_number = 57   # x*8 + 1
   width = 640
   height = 384
 
   video_frames_tensor, pil_video_frames = load_video_and_transform(video_path, frame_number, new_width=width, new_height=height, resize=True)
-  del pil_video_frames
   video_frames_tensor = video_frames_tensor.permute(1, 0, 2, 3).unsqueeze(0)
   print(video_frames_tensor.shape)
   # video_frames_tensor = video_frames_tensor.to("cuda", dtype=torch.bfloat16)
+
+  model.vae.use_tiling = True
+  model.vae.tile_sample_min_size = 256  # Optional: standard tile size
   
 
   with torch.no_grad(), torch.cuda.amp.autocast(enabled=True, dtype=torch.bfloat16):
       latent = model.encode_latent(video_frames_tensor.to("cuda"), sample=False, window_size=8, temporal_chunk=True)
-      print(latent)
+      rec_frames = model.decode_latent(latent.float(), window_size=2, temporal_chunk=True)
+      print(latent.shape)
+      print(rec_frames)
 
-  del video_frames_tensor
-  torch.cuda.empty_cache()
+  export_to_video(pil_video_frames, './ori_video.mp4', fps=24)
+  export_to_video(rec_frames, "./rec_video.mp4", fps=24)
+
+  # del video_frames_tensor
+  # torch.cuda.empty_cache()
+
+
 
 
