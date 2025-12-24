@@ -315,6 +315,33 @@ class MetricLogger(object):
             header, total_time_str, total_time / len(iterable)))
 
 
+from torch.utils.tensorboard import SummaryWriter
+import torch
+
+class TensorboardLogger(object):
+    def __init__(self, log_dir):
+        self.writer = SummaryWriter(log_dir=log_dir)
+        self.step = 0
+
+    def set_step(self, step=None):
+        if step is not None:
+            self.step = step
+        else:
+            self.step += 1
+
+    def update(self, head='scalar', **kwargs):
+        for k, v in kwargs.items():
+            if v is None:
+                continue
+            if isinstance(v, torch.Tensor):
+                v = v.item()
+            assert isinstance(v, (float, int))
+            self.writer.add_scalar(head + "/" + k, v, self.step)
+
+    def flush(self):
+        self.writer.flush()
+
+
 def auto_load_model(args, model, model_without_ddp, optimizer, loss_scaler, model_ema=None, optimizer_disc=None):
     output_dir = Path(args.output_dir)
     if args.auto_resume and len(args.resume) == 0:

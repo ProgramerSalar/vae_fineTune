@@ -31,7 +31,7 @@ from trainer_misc import (
 from video_vae import CausalVideoVAELossWrapper
 from args import get_args
 
-
+from trainer_misc.utils import TensorboardLogger
 from PIL import ImageFile
 ImageFile.LOAD_TRUNCATED_IMAGES = True
 
@@ -85,7 +85,15 @@ def main(args):
     model = build_model(args)
     
     num_training_steps_per_epoch = args.iters_per_epoch
+    # log_writer = None
+    # --- NEW CODE ---
     log_writer = None
+    if args.output_dir:
+        # Create a 'tensorboard' folder inside your output directory
+        log_dir = os.path.join(args.output_dir, "tensorboard_logs")
+        print(f"Enable TensorBoard! Logging to {log_dir}")
+        log_writer = TensorboardLogger(log_dir=log_dir)
+    # ----------------
 
 
 
